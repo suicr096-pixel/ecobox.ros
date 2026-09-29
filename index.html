@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#55b847">
+<title>Ecobox | Comida que merece una segunda oportunidad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+ --green:#55b847;--green2:#2d8a36;--green-dark:#176126;--mint:#eef9ec;
+ --cream:#fff9e9;--orange:#ff8a1f;--red:#ee5b50;--ink:#17251a;
+ --muted:#728076;--line:#e5ece4;--white:#fff;--bg:#f7faf6;
+ --shadow:0 18px 50px rgba(33,82,40,.11);--shadow2:0 7px 22px rgba(33,82,40,.08);
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.top{height:76px;background:rgba(255,255,255,.93);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100}
+.navbar{height:100%;max-width:1250px;margin:auto;padding:0 22px;display:flex;align-items:center;gap:35px}
+.logo{display:flex;align-items:center;gap:10px}.logo img{width:49px;height:49px;object-fit:contain}.logo b{font-family:"Plus Jakarta Sans";font-size:21px;color:var(--green-dark);display:block}.logo small{color:#879188;font-size:10px}
+.links{display:flex;gap:6px;flex:1}.links button{border:0;background:transparent;padding:11px 15px;border-radius:12px;color:#647067;font-weight:700}.links button:hover,.links button.active{background:var(--mint);color:var(--green-dark)}
+.location{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}.cart{border:0;background:var(--ink);color:#fff;border-radius:14px;padding:11px 14px;font-weight:800}.cart span{background:var(--green);border-radius:20px;padding:3px 7px;margin-left:5px}
+.hero{max-width:1250px;margin:0 auto;padding:50px 22px 28px;display:grid;grid-template-columns:1.04fr .96fr;gap:50px;align-items:center}
+.pill{display:inline-flex;gap:7px;align-items:center;background:#e8f7e5;color:var(--green-dark);padding:8px 12px;border-radius:30px;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+h1,h2,h3{font-family:"Plus Jakarta Sans",sans-serif}.hero h1{font-size:clamp(42px,5.3vw,72px);line-height:1.02;letter-spacing:-.055em;margin:17px 0;color:#16371c}.hero h1 em{font-style:normal;color:var(--green2)}.hero p{max-width:610px;color:var(--muted);font-size:18px;line-height:1.7;margin:0}
+.actions{display:flex;gap:11px;margin-top:26px}.btn{border:0;border-radius:13px;padding:13px 18px;font-weight:800;transition:.2s}.btn.green{background:var(--green);color:#fff;box-shadow:0 8px 20px rgba(85,184,71,.25)}.btn.green:hover{background:var(--green2);transform:translateY(-2px)}.btn.white{background:#fff;border:1px solid var(--line);color:var(--green-dark)}.btn.white:hover{background:var(--mint)}
+.hero-visual{position:relative}.hero-image{background:var(--cream);border:9px solid #fff;border-radius:32px;box-shadow:var(--shadow);overflow:hidden;transform:rotate(1deg)}.hero-image img{display:block;width:100%}
+.float-card{position:absolute;left:-18px;bottom:25px;background:#fff;border-radius:17px;box-shadow:var(--shadow);padding:14px 17px;display:flex;align-items:center;gap:10px}.float-card .round{width:40px;height:40px;border-radius:12px;background:#eaf7e8;display:grid;place-items:center}.float-card b{font-size:14px}.float-card small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.trust{max-width:1250px;margin:0 auto;padding:0 22px 30px;display:flex;gap:14px;flex-wrap:wrap}.trust-item{background:#fff;border:1px solid var(--line);padding:10px 14px;border-radius:12px;font-size:12px;color:#536058}.trust-item b{color:var(--green-dark)}
+.strip{background:#173b1b;color:#fff;padding:22px 5vw;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.strip-item{text-align:center}.strip-item strong{display:block;font-size:16px}.strip-item span{color:#c9ddca;font-size:12px}
+.section{max-width:1250px;margin:auto;padding:62px 22px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:24px}.section-head h2{font-size:36px;letter-spacing:-.04em;margin:8px 0 0}.section-head p{margin:6px 0 0;color:var(--muted)}.controls{display:flex;gap:8px}.search,.select{background:#fff;border:1px solid var(--line);padding:12px 13px;border-radius:12px;outline:0}.search{min-width:245px}.search:focus,.select:focus{border-color:var(--green)}
+.notice{background:linear-gradient(90deg,#fff7e4,#fffaf0);border:1px solid #f1dfb6;border-radius:15px;padding:12px 15px;display:flex;gap:10px;font-size:12px;color:#6d592a;margin-bottom:23px}.notice p{margin:0;line-height:1.5}
+.chips{display:flex;gap:8px;overflow:auto;padding-bottom:15px}.chip{white-space:nowrap;border:1px solid var(--line);background:#fff;color:#647067;padding:9px 13px;border-radius:30px;font-size:12px;font-weight:800}.chip.active,.chip:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}.card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow2);transition:.22s}.card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.food{height:158px;background:linear-gradient(135deg,#f1faed,#fff);display:grid;place-items:center;position:relative;font-size:65px}.off{position:absolute;top:11px;left:11px;background:var(--orange);color:#fff;font-size:11px;font-weight:900;padding:6px 8px;border-radius:8px}.heart{position:absolute;top:10px;right:10px;border:0;background:#fff;width:32px;height:32px;border-radius:50%;box-shadow:0 4px 12px #0001}.body{padding:15px}.body h3{font-size:16px;margin:0 0 4px}.store{color:var(--muted);font-size:12px}.tag{display:inline-block;margin:10px 0 11px;background:#fff1dd;color:#a75a0d;padding:5px 8px;border-radius:7px;font-size:10px;font-weight:900}.prices{display:flex;align-items:center;gap:8px}.old{text-decoration:line-through;color:#9aa19b;font-size:12px}.price{font-size:21px;color:var(--green-dark);font-weight:900}.card-foot{display:flex;gap:7px;margin-top:13px}.smallbtn{flex:1;border-radius:10px;padding:10px;border:1px solid var(--green);font-size:12px;font-weight:900}.detail{background:#fff;color:var(--green-dark)}.add{background:var(--green);color:#fff}
+.banner{max-width:1206px;margin:0 auto 50px;border-radius:28px;background:#fff;border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;box-shadow:var(--shadow2)}.banner-copy{padding:45px}.banner h2{font-size:34px;letter-spacing:-.04em;margin:8px 0 12px}.banner p{color:var(--muted);line-height:1.65}.banner img{width:100%;height:100%;min-height:300px;object-fit:contain;background:#fbf6e7}
+.page{display:none}.page.active{display:block}.pagehead{max-width:1100px;margin:auto;padding:65px 22px 25px}.pagehead h1{font-size:48px;margin:10px 0}.pagehead p{color:var(--muted)}
+.form-layout{max-width:1050px;margin:auto;padding:0 22px 70px;display:grid;grid-template-columns:1fr 1fr;gap:20px}.panel{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:var(--shadow2)}.form{display:grid;gap:15px}.form label{font-size:12px;font-weight:800;display:grid;gap:7px}.form input,.form select{border:1px solid var(--line);padding:12px;border-radius:11px;outline:0}.form input:focus,.form select:focus{border-color:var(--green)}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.preview{background:linear-gradient(145deg,#eff9ed,#fff);min-height:400px}.preview-note{height:100%;display:grid;place-items:center;text-align:center;color:var(--muted);padding:40px}
+.orders{max-width:850px;margin:auto;padding:0 22px 70px;display:grid;gap:12px}.order{background:#fff;border:1px solid var(--line);border-radius:17px;padding:17px;display:flex;justify-content:space-between;gap:15px;align-items:center}.order h3{margin:0 0 5px;font-size:15px}.order p{margin:0;color:var(--muted);font-size:12px}.status{background:#e8f7e5;color:var(--green-dark);padding:7px 9px;border-radius:8px;font-size:10px;font-weight:900}
+.drawer{position:fixed;right:0;top:0;height:100vh;width:min(410px,100%);z-index:300;background:#fff;box-shadow:-20px 0 55px #0003;transform:translateX(110%);transition:.25s;display:flex;flex-direction:column}.drawer.open{transform:none}.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:20px;border-bottom:1px solid var(--line)}.drawer-head h2{margin:0}.x{border:0;background:#f0f3f0;border-radius:9px;width:34px;height:34px}.cart-items{padding:16px;overflow:auto;flex:1}.cart-row{display:grid;grid-template-columns:48px 1fr auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.cart-icon{height:48px;width:48px;border-radius:11px;background:var(--mint);display:grid;place-items:center;font-size:25px}.cart-row strong{display:block;font-size:13px}.cart-row small{color:var(--muted)}.remove{border:0;background:transparent;color:var(--red);font-size:11px}.drawer-foot{border-top:1px solid var(--line);padding:18px}.total{display:flex;justify-content:space-between;margin-bottom:12px}.total strong{font-size:21px}.backdrop{display:none;position:fixed;inset:0;background:#0007;z-index:250}.backdrop.show{display:block}
+.modalbg{position:fixed;inset:0;background:#0008;z-index:400;display:none;place-items:center;padding:18px}.modalbg.show{display:grid}.modal{background:#fff;border-radius:24px;width:min(600px,100%);padding:24px;position:relative;max-height:90vh;overflow:auto}.modal .x{position:absolute;right:18px;top:18px}.modal-food{height:190px;background:var(--mint);border-radius:17px;display:grid;place-items:center;font-size:80px}.modal h2{font-size:29px;margin:18px 0 5px}.meta{color:var(--muted);font-size:13px}.modal-price{display:flex;align-items:center;gap:10px;margin:20px 0}.modal-price .price{font-size:31px}
+.toast{position:fixed;z-index:500;top:92px;left:50%;transform:translate(-50%,-15px);background:#173b1b;color:#fff;padding:12px 16px;border-radius:11px;opacity:0;pointer-events:none;transition:.25s;font-size:12px;box-shadow:var(--shadow)}.toast.show{opacity:1;transform:translate(-50%,0)}
+.bottom{display:none}
+footer{background:#173b1b;color:#cfe0cf;padding:27px 6vw;display:flex;justify-content:space-between;align-items:center}.footer-logo{display:flex;gap:8px;align-items:center;color:#fff;font-weight:900}.footer-logo img{width:35px;height:35px;object-fit:contain}.empty{background:#fff;border:1px dashed #cfd8cf;border-radius:16px;padding:40px;text-align:center;color:var(--muted);grid-column:1/-1}
+@media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.banner{margin:0 22px 40px}.form-layout{grid-template-columns:1fr}.location{display:none}}
+@media(max-width:650px){
+ .navbar{padding:0 14px}.links{display:none}.logo{flex:1}.logo b{font-size:18px}.hero{padding:35px 16px 20px}.hero h1{font-size:43px}.hero p{font-size:16px}.actions{flex-direction:column}.float-card{left:8px;bottom:15px}.strip{grid-template-columns:1fr;padding:17px}.section{padding:45px 16px}.section-head{align-items:flex-start;flex-direction:column}.section-head h2{font-size:29px}.controls{width:100%;flex-direction:column}.search{min-width:0;width:100%}.grid{grid-template-columns:1fr 1fr;gap:10px}.food{height:120px;font-size:48px}.body{padding:12px}.body h3{font-size:14px}.price{font-size:18px}.smallbtn{padding:9px 5px;font-size:10px}.banner{grid-template-columns:1fr;margin:0 16px 35px}.banner-copy{padding:28px}.banner h2{font-size:28px}.banner img{min-height:190px}.pagehead{padding:45px 16px 20px}.pagehead h1{font-size:37px}.form-layout,.orders{padding-left:16px;padding-right:16px}.two{grid-template-columns:1fr}.bottom{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:120;background:#fff;border-top:1px solid var(--line);justify-content:space-around;padding:8px}.bottom button{border:0;background:transparent;color:#778078;font-size:10px;font-weight:800}.bottom button.active{color:var(--green2)}.bottom i{display:block;font-style:normal;font-size:20px;margin-bottom:2px}footer{padding-bottom:80px;display:block;text-align:center}.footer-logo{justify-content:center;margin-bottom:8px}
+}
+
+        .brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-ecobox {
+            display: block;
+            width: 82px;
+            height: 82px;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        @media (max-width: 700px) {
+            .logo-ecobox {
+                width: 64px;
+                height: 64px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<header class="top">
+ <nav class="navbar">
+  <a class="logo" href="#" onclick="go('home');return false">
+   <img src="assets/image1.png" alt="Ecobox"><span><b>Ecobox</b><small>menos desperdicio</small></span>
+  </a>
+  <div class="links">
+   <button class="active" data-go="home">Inicio</button>
+   <button data-go="home" data-scroll="#offers">Ofertas</button>
+   <button data-go="orders">Mis reservas</button>
+   <button data-go="business">Soy comercio</button>
+  </div>
+  <div class="location">📍 Cerca tuyo</div>
+  <button class="cart" onclick="openCart()">🛒 Carrito <span id="cartCount">0</span></button>
+ </nav>
+</header>
+
+<main>
+<section id="home" class="page active">
+ <div class="hero">
+  <div>
+   <span class="pill">🌱 Comé rico · ahorrá · rescatá</span>
+   <h1>Lo que iba a desperdiciarse, <em>hoy llega a tu mesa.</em></h1>
+   <p>Encontrá alimentos con descuento cerca tuyo, reservá desde Ecobox y retiralos en el comercio. Una compra inteligente para vos y para el planeta.</p>
+   <div class="actions"><button class="btn green" onclick="document.querySelector('#offers').scrollIntoView({behavior:'smooth'})">Ver ofertas cerca →</button><button class="btn white" onclick="go('business')">Publicar una oferta</button></div>
+  </div>
+  <div class="hero-visual">
+   <div class="hero-image"><img src="assets/image2.png" alt="Prototipo Ecobox"></div>
+   <div class="float-card"><div class="round">♻️</div><div><b>Triple impacto</b><small>económico · social · ambiental</small></div></div>
+  </div>
+ </div>
+ <div class="trust"><div class="trust-item">✓ <b>Ofertas reales</b> de comercios</div><div class="trust-item">✓ <b>Reservá</b> antes de ir</div><div class="trust-item">✓ <b>Retirá</b> en el horario indicado</div></div>
+ <div class="strip"><div class="strip-item"><strong>💰 Ahorrás</strong><span>precios más accesibles</span></div><div class="strip-item"><strong>🏪 El comercio recupera</strong><span>parte de su inversión</span></div><div class="strip-item"><strong>🌎 Generamos menos residuos</strong><span>consumo responsable</span></div></div>
+
+ <section class="section" id="offers">
+  <div class="section-head">
+   <div><span class="pill">Ofertas cerca tuyo</span><h2>Rescatá algo rico hoy</h2><p>Productos que están cerca de perder valor comercial.</p></div>
+   <div class="controls"><input id="search" class="search" placeholder="🔎 Buscar..." type="search"><select id="category" class="select"><option value="all">Todas</option><option value="panaderia">Panadería</option><option value="verduleria">Verdulería</option><option value="supermercado">Supermercado</option><option value="restaurante">Restaurante</option></select></div>
+  </div>
+  <div class="notice">⚠️ <p><b>Importante:</b> Ecobox está pensado para productos que siguen siendo aptos para consumo. No se deben publicar alimentos que hayan superado una fecha de vencimiento que los haga no aptos.</p></div>
+  <div id="chips" class="chips"><button class="chip active" data-cat="all">Todos</button><button class="chip" data-cat="panaderia">🥖 Panadería</button><button class="chip" data-cat="verduleria">🥬 Verdulería</button><button class="chip" data-cat="supermercado">🛒 Supermercado</button><button class="chip" data-cat="restaurante">🍲 Restaurante</button></div>
+  <div id="grid" class="grid"></div>
+ </section>
+
+ <div class="banner">
+  <div class="banner-copy"><span class="pill">La idea de Ecobox</span><h2>Una app con triple impacto.</h2><p>Los comercios recuperan dinero, los clientes consiguen alimentos a menor precio y se reduce el desperdicio. La propuesta original contempla además comisiones, planes para comercios y publicidad.</p><button class="btn green" onclick="go('business')">Soy comercio →</button></div>
+  <img src="assets/image3.png" alt="Triple impacto Ecobox">
+ </div>
+</section>
+
+<section id="orders" class="page">
+ <div class="pagehead"><span class="pill">Mis reservas</span><h1>Todo listo para retirar.</h1><p>Acá vas a encontrar tus pedidos reservados y el código para presentarte en el comercio.</p></div>
+ <div id="ordersList" class="orders"></div>
+</section>
+
+<section id="business" class="page">
+ <div class="pagehead"><span class="pill">Panel para comercios</span><h1>Publicá lo que todavía puede venderse.</h1><p>Creá una oferta, indicá cantidad y horario de retiro y llegá a clientes cercanos.</p></div>
+ <div class="form-layout">
+  <div class="panel">
+   <form id="form" class="form">
+    <label>Producto<input name="name" required placeholder="Ej. Caja de panificados"></label>
+    <label>Comercio<input name="store" required placeholder="Ej. Panadería La Espiga"></label>
+    <label>Categoría<select name="category"><option value="panaderia">Panadería</option><option value="verduleria">Verdulería</option><option value="supermercado">Supermercado</option><option value="restaurante">Restaurante</option></select></label>
+    <div class="two"><label>Precio original<input name="original" type="number" min="1" required placeholder="6000"></label><label>Precio Ecobox<input name="price" type="number" min="1" required placeholder="3600"></label></div>
+    <div class="two"><label>Unidades<input name="stock" type="number" min="1" required placeholder="5"></label><label>Horario<input name="pickup" required placeholder="18:00 a 20:00"></label></div>
+    <label>Situación<select name="status"><option>Venta preferente próxima</option><option>Últimas unidades del día</option><option>Fecha de venta recomendada superada</option></select></label>
+    <button class="btn green" type="submit">🌱 Publicar oferta</button>
+   </form>
+  </div>
+  <div class="panel preview" id="preview"><div class="preview-note">Completá los datos y acá aparecerá la vista previa de tu publicación.</div></div>
+ </div>
+</section>
+</main>
+
+<div class="drawer" id="drawer"><div class="drawer-head"><h2>Tu carrito</h2><button class="x" onclick="closeCart()">✕</button></div><div class="cart-items" id="cartItems"></div><div class="drawer-foot"><div class="total"><span>Total</span><strong id="total">$0</strong></div><button class="btn green" style="width:100%" onclick="checkout()">Confirmar reserva</button></div></div>
+<div class="backdrop" id="backdrop" onclick="closeCart()"></div>
+
+<div class="modalbg" id="modalbg"><div class="modal"><button class="x" onclick="closeModal()">✕</button><div id="modal"></div></div></div>
+<div class="toast" id="toast"></div>
+
+<nav class="bottom"><button class="active" data-go="home"><i>🏠</i>Inicio</button><button data-go="home" data-scroll="#offers"><i>🔎</i>Ofertas</button><button data-go="orders"><i>📦</i>Reservas</button><button data-go="business"><i>🏪</i>Comercio</button></nav>
+
+<footer><div class="footer-logo"><img src="assets/image1.png" alt=""> Ecobox</div><div>Prototipo académico · Ideando empresas</div></footer>
+
+<script>
+const seed=[
+{id:1,name:"Pan del día",store:"Panadería La Espiga",cat:"panaderia",original:3000,price:1800,stock:8,pickup:"18:00 a 20:00 hs",status:"Venta preferente próxima",emoji:"🥖",distance:"250 m"},
+{id:2,name:"Cajón de verduras",store:"Verdulería Don Luis",cat:"verduleria",original:6000,price:3600,stock:5,pickup:"18:00 a 20:00 hs",status:"Últimas unidades del día",emoji:"🥬",distance:"400 m"},
+{id:3,name:"Lácteos por vender",store:"Súper Central",cat:"supermercado",original:2500,price:1500,stock:10,pickup:"17:30 a 19:30 hs",status:"Venta preferente próxima",emoji:"🥛",distance:"650 m"},
+{id:4,name:"Menú del día",store:"Resto El Sauce",cat:"restaurante",original:5000,price:3000,stock:6,pickup:"20:00 a 21:30 hs",status:"Fecha de venta recomendada superada",emoji:"🍲",distance:"900 m"},
+{id:5,name:"Facturas surtidas",store:"Panadería La Espiga",cat:"panaderia",original:4200,price:2200,stock:4,pickup:"19:00 a 20:30 hs",status:"Últimas unidades del día",emoji:"🥐",distance:"250 m"},
+{id:6,name:"Frutas maduras",store:"Verdulería Don Luis",cat:"verduleria",original:3500,price:1900,stock:7,pickup:"17:00 a 20:00 hs",status:"Venta preferente próxima",emoji:"🍎",distance:"400 m"}
+];
+let products=JSON.parse(localStorage.getItem("ecoProducts")||"null")||seed;
+let cart=JSON.parse(localStorage.getItem("ecoCart")||"[]");
+let orders=JSON.parse(localStorage.getItem("ecoOrders")||"[]");
+const $=s=>document.querySelector(s), money=n=>"$"+Number(n).toLocaleString("es-AR"), disc=p=>Math.round((1-p.price/p.original)*100);
+function save(){localStorage.setItem("ecoProducts",JSON.stringify(products));localStorage.setItem("ecoCart",JSON.stringify(cart));localStorage.setItem("ecoOrders",JSON.stringify(orders))}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function toast(s){let t=$("#toast");t.textContent=s;t.classList.add("show");clearTimeout(window.tt);window.tt=setTimeout(()=>t.classList.remove("show"),2300)}
+function render(){
+ let q=($("#search")?.value||"").toLowerCase(), c=$("#category")?.value||"all";
+ let arr=products.filter(p=>p.stock>0&&(c==="all"||p.cat===c)&&(`${p.name} ${p.store}`).toLowerCase().includes(q));
+ $("#grid").innerHTML=arr.length?arr.map(p=>`
+ <article class="card"><div class="food"><span class="off">-${disc(p)}%</span><button class="heart">♡</button>${p.emoji}</div>
+ <div class="body"><h3>${esc(p.name)}</h3><div class="store">${esc(p.store)} · ${p.distance}</div><span class="tag">⏱ ${esc(p.status)}</span>
+ <div class="prices"><span class="old">${money(p.original)}</span><span class="price">${money(p.price)}</span></div>
+ <div class="card-foot"><button class="smallbtn detail" onclick="detail(${p.id})">Ver detalle</button><button class="smallbtn add" onclick="add(${p.id})">Reservar</button></div></div></article>`).join(""):`<div class="empty">No encontramos ofertas con esos filtros.</div>`;
+ renderCart();renderOrders();
+}
+function detail(id){
+ let p=products.find(x=>x.id===id);if(!p)return;
+ $("#modal").innerHTML=`<div class="modal-food">${p.emoji}</div><h2>${esc(p.name)}</h2><div class="meta">${esc(p.store)} · ${p.distance} de distancia</div><div class="modal-price"><span class="old">${money(p.original)}</span><span class="price">${money(p.price)}</span><span class="off">-${disc(p)}%</span></div><p><b>Retiro:</b> ${esc(p.pickup)}</p><p><b>Disponibilidad:</b> ${p.stock} unidades.</p><p><b>Estado:</b> ${esc(p.status)}.</p><p style="color:var(--muted);font-size:13px">El comercio informa que el producto continúa siendo apto para la venta. Ecobox no debe utilizarse para comercializar alimentos que hayan superado una fecha de vencimiento que los haga no aptos.</p><button class="btn green" style="width:100%" onclick="add(${p.id});closeModal()">Reservar esta oferta</button>`;
+ $("#modalbg").classList.add("show")
+}
+function closeModal(){$("#modalbg").classList.remove("show")}
+function add(id){let p=products.find(x=>x.id===id);if(!p||p.stock<1)return toast("Oferta sin stock");let i=cart.find(x=>x.id===id);if(i){if(i.qty>=p.stock)return toast("No quedan más unidades");i.qty++}else cart.push({id,qty:1});save();renderCart();toast("✓ Oferta agregada al carrito")}
+function renderCart(){
+ $("#cartCount").textContent=cart.reduce((a,x)=>a+x.qty,0);
+ if(!cart.length){$("#cartItems").innerHTML='<div class="empty">Tu carrito está vacío.<br><br>Elegí una oferta para comenzar.</div>';$("#total").textContent="$0";return}
+ $("#cartItems").innerHTML=cart.map(i=>{let p=products.find(x=>x.id===i.id);return `<div class="cart-row"><div class="cart-icon">${p.emoji}</div><div><strong>${esc(p.name)}</strong><small>${i.qty} × ${money(p.price)}</small></div><button class="remove" onclick="removeItem(${p.id})">Quitar</button></div>`}).join("");
+ $("#total").textContent=money(cart.reduce((a,i)=>a+products.find(p=>p.id===i.id).price*i.qty,0))
+}
+function removeItem(id){cart=cart.filter(x=>x.id!==id);save();renderCart()}
+function openCart(){$("#drawer").classList.add("open");$("#backdrop").classList.add("show")}
+function closeCart(){$("#drawer").classList.remove("open");$("#backdrop").classList.remove("show")}
+function checkout(){
+ if(!cart.length)return toast("Tu carrito está vacío");
+ let items=cart.map(i=>{let p=products.find(x=>x.id===i.id);p.stock-=i.qty;return {name:p.name,store:p.store,qty:i.qty,total:p.price*i.qty,pickup:p.pickup,code:"ECO-"+Math.random().toString(36).slice(2,7).toUpperCase()}});
+ orders.unshift({date:new Date().toLocaleString("es-AR"),items,total:items.reduce((a,i)=>a+i.total,0)});
+ cart=[];save();render();closeCart();go("orders");toast("✓ Reserva confirmada")
+}
+function renderOrders(){
+ if(!orders.length){$("#ordersList").innerHTML='<div class="empty">Todavía no tenés reservas.<br>Explorá las ofertas para rescatar tu primera comida.</div>';return}
+ $("#ordersList").innerHTML=orders.map(o=>`<article class="order"><div><h3>${esc(o.items.map(i=>i.name).join(", "))}</h3><p>${esc(o.date)} · ${money(o.total)} · Código: <b>${esc(o.items[0].code)}</b></p><p style="margin-top:5px">Retiro: ${esc(o.items[0].pickup)}</p></div><span class="status">RESERVADO</span></article>`).join("")
+}
+function go(id){
+ document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));$("#"+id).classList.add("active");
+ document.querySelectorAll("[data-go]").forEach(x=>x.classList.toggle("active",x.dataset.go===id));
+ scrollTo({top:0,behavior:"smooth"})
+}
+document.addEventListener("click",e=>{
+ let b=e.target.closest("[data-go]");if(b){e.preventDefault();go(b.dataset.go);if(b.dataset.scroll)setTimeout(()=>document.querySelector(b.dataset.scroll)?.scrollIntoView({behavior:"smooth"}),80)}
+});
+$("#search").oninput=render;$("#category").onchange=render;
+document.querySelectorAll(".chip").forEach(ch=>ch.onclick=()=>{document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));ch.classList.add("active");$("#category").value=ch.dataset.cat;render()});
+$("#form").onsubmit=e=>{
+ e.preventDefault();let f=new FormData(e.target),p={id:Date.now(),name:f.get("name"),store:f.get("store"),cat:f.get("category"),original:+f.get("original"),price:+f.get("price"),stock:+f.get("stock"),pickup:f.get("pickup"),status:f.get("status"),emoji:"📦",distance:"Nuevo"};
+ products.unshift(p);save();render();e.target.reset();$("#preview").innerHTML=`<article class="card"><div class="food"><span class="off">-${disc(p)}%</span>📦</div><div class="body"><h3>${esc(p.name)}</h3><div class="store">${esc(p.store)} · recién publicada</div><span class="tag">⏱ ${esc(p.status)}</span><div class="prices"><span class="old">${money(p.original)}</span><span class="price">${money(p.price)}</span></div><button class="btn green" style="width:100%;margin-top:12px">Oferta publicada ✓</button></div></article>`;toast("✓ Oferta publicada en Ecobox")}
+render();
+</script>
+</body>
+</html>
